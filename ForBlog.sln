@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryBuddyData", "GroceryBuddyData\GroceryBuddyData.csproj", "{53FF9C29-A43C-4FEF-9225-9DB955FBABFF}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GroceryBuddyWeb", "http://localhost:51557", "{F887FA6C-A355-4057-8025-393D347CDF8C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GroceryBuddyWeb", "http://localhost:51557", "{BD786302-212E-4257-8FBA-D96C88965EEA}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
@@ -34,10 +34,10 @@ Global
 		{53FF9C29-A43C-4FEF-9225-9DB955FBABFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53FF9C29-A43C-4FEF-9225-9DB955FBABFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53FF9C29-A43C-4FEF-9225-9DB955FBABFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F887FA6C-A355-4057-8025-393D347CDF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F887FA6C-A355-4057-8025-393D347CDF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F887FA6C-A355-4057-8025-393D347CDF8C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F887FA6C-A355-4057-8025-393D347CDF8C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{BD786302-212E-4257-8FBA-D96C88965EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD786302-212E-4257-8FBA-D96C88965EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD786302-212E-4257-8FBA-D96C88965EEA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD786302-212E-4257-8FBA-D96C88965EEA}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "ca.solvera.grocerybuddydemo"
+        version   = "0.0.1">
+    <name>Grocery Buddy - Demo</name>
+
+    <description>
+        HTML5 hybrid app developed using Darek's instructions
+    </description>
+
+    <author href="http://www.solvera.ca" email="darek.tomyn@solvera.ca">
+        Darek Tomyn
+    </author>
+
+    <icon src="icon.png" />
+</widget>

@@ -1,4 +1,21 @@
 ﻿/// <reference path="_references.js" />
+
+//#region CONSTANTS
+(function () {
+    GB_BASE_DATA_LOCATION = 'http://grocerybuddydata.azurewebsites.net';
+    //GB_BASE_DATA_LOCATION = 'http://localhost:54328';
+
+    //application stores all carts to localStorage (if available)... this is the storage key
+    GB_STORAGEKEY_CARTS = 'MyCarts';
+
+    //each page has a "constant"
+    GB_PAGE_CARTS_LIST = '#cartsPage';
+    GB_PAGE_ADD_CART = '#addCartPage';
+    GB_PAGE_CART_ITEMS = '#cartItemsPage';
+    GB_PAGE_ADD_CART_ITEM = '#addCartItemPage';
+})();
+//#endregion CONSTANTS
+
 $(function () {
 
     /// Class to represent a category
@@ -8,7 +25,6 @@ $(function () {
         // #region Properties
         self.value = value;
         self.name = name;
-        self.icon = icon;
         // #endregion Properties
 
         return self;
@@ -21,7 +37,6 @@ $(function () {
         // #region Properties
         self.value = value;
         self.name = name;
-        self.icon = icon;
         // #endregion Properties
 
         return self;
@@ -36,7 +51,6 @@ $(function () {
         Sku: sku;
         Name: name;
         Description: description;
-        IsNew: isNew;
         // #endregion Properties
 
         return self;
@@ -149,6 +163,35 @@ $(function () {
                 availableMeasurements.push(new Measurement("ML", "ML", "TODO"));
                 availableMeasurements.push(new Measurement("L", "L", "TODO"));
             }
+// #region NAVIGATION operations
+            ///Navigates to the "cartsPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
+            , navigateToCartsPage = function () {
+                $.mobile.changePage("#cartsPage");
+                $('#cartsPage').trigger('pagecreate');
+                $('#theCartList').listview('refresh');
+            }
+
+            ///Navigates to the "addCartPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
+            , navigateToAddCartPage = function () {
+                $.mobile.changePage("#addCartPage");
+                $('#addCartPage').trigger('pagecreate');
+            }
+
+            ///Navigates to the "cartItemsPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
+            , navigateToCartItemsPage = function () {
+                $.mobile.changePage("#cartItemsPage");
+                //clear out previous values...
+
+                $('#cartItemsPage').trigger('pagecreate');
+                $('#cartItemsListView').listview('refresh');
+            }
+
+            ///Navigates to the "addCartItemPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
+            , navigateToAddCartItemPage = function () {
+                $.mobile.changePage("#addCartItemPage");
+                $('#addCartItemPage').trigger('pagecreate');
+            }
+// #endregion NAVIGATION operations
             /// Called when want to start adding a new cart
             , addCartBegin = function () {
                 $('#currentCartName').val('');
@@ -156,7 +199,6 @@ $(function () {
             }
             /// Cancels the save cart operation and navigates back to the main carts page
             , addCartCancel = function () {
-                $('#currentCartName').val('');
                 navigateToCartsPage();
             }
             /// Saves a cart to the carts collection and then navigates back to the main carts page
@@ -178,7 +220,6 @@ $(function () {
             }
             /// Saves a cart items to the currently selected cart
             , addCartItemSave = function () {
-                //TODO: better way to do this is to have an observable item on this page... for now using standard jQuery to get values
                 var ci = new CartItem($('#sku').val(), $('#itemName').val(), $('#itemCategory').val(), $('#itemNumberOfPieces').val(), $('#itemSize').val(), $('#itemMeasurement').val());
                 if (selectedCart() != null) {
                     selectedCart().addItem(ci);
@@ -209,35 +250,6 @@ $(function () {
                 navigateToCartItemsPage();
             }
 
-// #region NAVIGATION operations
-            ///Navigates to the "cartsPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
-            , navigateToCartsPage = function () {
-                $.mobile.changePage("#cartsPage");
-                $('#cartsPage').trigger('pagecreate');
-                $('#theCartList').listview('refresh');
-            }
-
-            ///Navigates to the "addCartPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
-            , navigateToAddCartPage = function () {
-                $.mobile.changePage("#addCartPage");
-                $('#addCartPage').trigger('pagecreate');
-            }
-
-            ///Navigates to the "cartItemsPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
-            , navigateToCartItemsPage = function () {
-                $.mobile.changePage("#cartItemsPage");
-                //clear out previous values...
-
-                $('#cartItemsPage').trigger('pagecreate');
-                $('#cartItemsListView').listview('refresh');
-            }
-
-            ///Navigates to the "addCartItemPage". Wrapped to ensure jQuery mobile "redraws" screen correctly
-            , navigateToAddCartItemPage = function () {
-                $.mobile.changePage("#addCartItemPage");
-                $('#addCartItemPage').trigger('pagecreate');
-            }
-// #endregion NAVIGATION operations
             , startBarCodeScanning = function () {
                 alert('start scanner here...');
                 //scanner.scan();
